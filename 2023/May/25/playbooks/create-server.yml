@@ -1,0 +1,47 @@
+---
+- hosts: localhost
+  tasks:
+
+  - name: gather information about digitalocean ssh keys
+    community.digitalocean.digital_ocean_sshkey_info:
+    register: ssh_keys
+
+  - name: set sshkey_pub_id when ansible-demo key exists
+    set_fact:
+      sshkey_pub_id: "{{ ssh_keys.data | selectattr('name', 'equalto', 'ansible-demo') | map(attribute='id') | first }}"
+    ignore_errors: true
+
+  - name: create ssh key without passphrase at /tmp/ansible-demo-id_rsa
+    ansible.builtin.command: ssh-keygen -b 2048 -t rsa -f /tmp/ansible-demo-id_rsa -N ""
+    when: sshkey_pub_id is not defined
+
+  - name: read contents of /tmp/ansible-demo-id_rsa.pub
+    ansible.builtin.command: cat /tmp/ansible-demo-id_rsa.pub
+    register: sshkey_pub
+    when: sshkey_pub_id is not defined
+
+  - name: upload ssh key to digitalocean
+    community.digitalocean.digital_ocean_sshkey:
+      name: "ansible-demo"
+      ssh_pub_key: "{{ sshkey_pub.stdout }}"
+      state: present
+    register: result
+    when: sshkey_pub_id is not defined
+
+  - name: set sshkey_pub_id when ansible-demo key exists
+    set_fact:
+      sshkey_pub_id: "{{ result.data.ssh_key.id }}"
+    when: sshkey_pub_id is not defined
+
+  - name: create a new digitalocean server
+    community.digitalocean.digital_ocean_droplet:
+      state: present
+      name: ansible-demo
+      size: s-1vcpu-1gb
+      region: sfo3
+      image: ubuntu-22-04-x64
+      wait_timeout: 500
+      ssh_keys: 
+      - "{{ sshkey_pub_id }}" 
+      unique_name: true
+    register: my_droplet

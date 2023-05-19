@@ -1,0 +1,26 @@
+---
+- hosts: localhost
+  tasks:
+
+  - name: gather information about digitalOcean ssh keys
+    community.digitalocean.digital_ocean_sshkey_info:
+    register: ssh_keys
+
+  - name: set sshkey_pub_id when ansible-demo key exists
+    set_fact:
+      sshkey_pub_id: "{{ ssh_keys.data | selectattr('name', 'equalto', 'ansible-demo') | map(attribute='id') | first }}"
+    ignore_errors: true
+
+  - name: remove ssh key from digitalocean
+    community.digitalocean.digital_ocean_sshkey:
+      name: "ansible-demo"
+      id: "{{ sshkey_pub_id }}"
+      state: absent
+    when: sshkey_pub_id is defined
+
+  - name: destroy ansible-demo digitalocean server
+    community.digitalocean.digital_ocean_droplet:
+      state: absent
+      name: ansible-demo
+      wait_timeout: 500
+      unique_name: true

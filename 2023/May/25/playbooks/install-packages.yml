@@ -1,0 +1,11 @@
+---
+- hosts: ansible-demo
+  tasks:
+  - name: install latest version of various packages with apt
+    ansible.builtin.apt:
+      update_cache: yes
+      pkg:
+      - emacs
+      - neofetch
+      - python3-pip
+

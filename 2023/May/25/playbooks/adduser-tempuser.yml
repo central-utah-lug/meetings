@@ -1,0 +1,20 @@
+---
+- hosts: ansible-demo
+  tasks:
+  - name: create tempuser 
+    ansible.builtin.user:
+      name: tempuser
+      uid: 1050
+      shell: /bin/bash
+  - name: create /home/tempuser/.ssh
+    ansible.builtin.file:
+      state: directory
+      path: /home/tempuser/.ssh
+      owner: tempuser
+      mode: 0700
+  - name: use previously generated ssh key as ~/.ssh/authorized_keys file for tempuser
+    ansible.builtin.copy:
+      src: /tmp/ansible-demo-id_rsa.pub
+      dest: /home/tempuser/.ssh/authorized_keys
+      owner: tempuser
+      mode: 0600
