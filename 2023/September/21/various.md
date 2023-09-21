@@ -1,7 +1,10 @@
-%title: Various topics for September 21, 2023
-%author: heywoodlh
+---
+---
 
--> Nextcloud <-
+# Nextcloud
+
+---
+<!-- footer: nextcloud -->
 
 Nextcloud is a self-hosted storage solution with many addons to provide full office suite functionality.
 
@@ -11,7 +14,9 @@ https://nextcloud.com/
 
 ---
 
--> How I access iCloud Drive from Nextcloud <-
+<!-- footer: nextcloud -->
+
+## How I access iCloud Drive from Nextcloud
 
 I have a dedicated Mac Mini for various Apple Services with iCloud Drive turned on.
 
@@ -27,29 +32,45 @@ You can use the [External Storage plugin](https://docs.nextcloud.com/server/late
 
 ---
 
--> Configure SFTP Nextcloud MacOS <-
-
 ![nextcloud sftp](./pictures/nextcloud-sftp.png)
+
+---
 
 ![icloud in files](./pictures/nextcloud-files-icloud.png)
 
 ---
+<!-- footer: cloudflare-zt-ssh -->
 
--> SSH access in the browser using Cloudflare Zero Trust <-
+
+# SSH access in the browser using Cloudflare Zero Trust
+
+---
+<!-- footer: cloudflare-zt-ssh -->
 
 Cloudflare Zero Trust has a nice feature for rendering SSH sessions in the browser.
-
-![cloudflare-zt ssh session](./pictures/cloudflare-zt-ssh.png)
 
 [Connect with SSH through Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/use-cases/ssh/)
 
 ---
 
--> Using an open source front-end for Youtube <-
+![cloudflare-zt ssh session](./pictures/cloudflare-zt-ssh.png)
+
+---
+<!-- footer: youtube-frontend -->
+
+# Open source front-ends for Youtube and Reddit
+
+---
+
+## Using an open source front-end for Youtube
 
 For ad-free Youtube, I use a self-hosted front-end called CloudTube: https://sr.ht/~cadence/tube/
 
+---
+
 ![cloudtube](./pictures/cloudtube.png)
+
+---
 
 I use a Firefox extension named [Redirector](https://addons.mozilla.org/en-US/firefox/addon/redirector/) to automatically redirect Youtube links to CloudTube.
 
@@ -60,17 +81,20 @@ Here's my Redirector rule for Youtube links:
 I use this Apple Shortcut on my iPhone to rewrite Youtube links to CloudTube: [Open in CloudTube](https://www.icloud.com/shortcuts/01d755eaed2c4f22b4683d8f2b96e511)
 
 ---
+<!-- footer: reddit-frontend -->
 
--> Using an open source front-end for Reddit <-
+## Using an open source front-end for Reddit 
 
 For a better, read-only Reddit experience, I use Teddit: https://codeberg.org/teddit/teddit
 
+---
+
 ![teddit](./pictures/teddit.png)
+
+---
 
 Similar to my Cloudtube setup, I have a Redirector rule to automatically redirect Reddit links to Teddit:
 
 ![teddit-redirector](./pictures/redirector-teddit.png)
 
 And an Apple Shortcut: [Open in Teddit](https://www.icloud.com/shortcuts/9ef4394b0bd34e0fadd79051fa540ecb)
-
----
