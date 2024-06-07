@@ -39,6 +39,8 @@ Run it with Ollama:
 - is easy to use 
 - cli and api (matches openai api?)
 
+[NetworkChuck video](https://www.youtube.com/watch?v=Wjrdr0NU4Sk)
+
 ---
 
 ollama docker compose
@@ -177,3 +179,8 @@ Has a similar free tier
 Documentation mentions connection logging, which would be great for audits / enterprise.
 
 <https://docs.netbird.io/how-to/monitor-system-and-network-activity>
+
+
+---
+
+talk about homeassistant widget
