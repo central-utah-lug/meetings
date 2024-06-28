@@ -21,6 +21,18 @@ style: |
 
 ---
 
+## other stuff
+
+Flirc (IR USB dongle)
+
+nixos on the server
+
+sunshine on amd vs nvidia graphics (with moonlight client)
+
+spoofing motherboard as vm
+
+---
+
 ## Third Party Package Managers
 ##### or package managers that do not run the OS
 
@@ -135,7 +147,7 @@ gui:
 }
 ```
 
-
 ---
 
 ## What is unstable
+
