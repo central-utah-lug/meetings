@@ -88,21 +88,20 @@ then home manager <https://nix-community.github.io/home-manager>
 
 `.config/home-manager/home.nix`
 
-```
+```nix
 { config, pkgs, ... }:
-
 {
   home.username = "alexm";
   home.homeDirectory = "/home/alexm";
   home.stateVersion = "24.05"; # do not change
-  home.packages = [
-    pkgs.openldap
-    pkgs.k9s
-    pkgs.jwt-cli
-    pkgs.thefuck
-    pkgs.fish
-    pkgs.kubectl
-    pkgs.lazydocker
+  home.packages = with pkgs; [
+    openldap
+    k9s
+    jwt-cli
+    thefuck
+    fish
+    kubectl
+    lazydocker
   ];
   programs.fish = {
     enable = true;
@@ -148,6 +147,10 @@ gui:
 ```
 
 ---
+## Commands to know
 
-## What is unstable
+- `home-manager switch`
+- `nix-channel --list`
+- `nix-shell -p <program>`
+- `home-manager generations`
 
