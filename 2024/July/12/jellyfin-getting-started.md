@@ -152,6 +152,20 @@ docker run -d \
     linuxserver/beets
 # docker exec -it -u 1000 beets bash -c "beet import -is /alex/*"
 ```
+
+output/config.yml
+```yml
+import:
+    write: no
+    copy: no
+    move: yes
+    resume: ask
+    incremental: yes
+    quiet_fallback: skip
+    timid: yes
+    log: /config/beet.log
+...
+```
 ---
 
 ## Additional Reading
