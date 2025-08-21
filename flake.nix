@@ -20,6 +20,7 @@
         buildInputs = with pkgs; [
           nodejs
           marp
+          mdp
         ];
       };
 
